@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registered Students | VVU</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body class="inner-page">
+
+<!-- NAVBAR -->
+<header class="navbar scrolled" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">VVU</div>
+      <div class="logo-text">
+        <span class="logo-name">Valley View University</span>
+        <span class="logo-tag">Excellence · Integrity · Service</span>
+      </div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html"        class="nav-link">Home</a>
+      <a href="registration.html" class="nav-link">Register</a>
+      <a href="students.html"     class="nav-link active">Students</a>
+      <a href="events.html"       class="nav-link">Events</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>Registered Students</span>
+    </div>
+    <h1 class="page-title">Registered <em>Students</em></h1>
+    <p class="page-subtitle">View, search, and manage all student course registrations stored locally.</p>
+  </div>
+</section>
+
+<!-- STUDENTS SECTION -->
+<section class="students-section">
+  <div class="container">
+
+    <!-- Controls bar -->
+    <div class="students-controls">
+      <!-- Search by Student ID (Task 3) -->
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search by Student ID (e.g. VVU/2025/01)" oninput="filterStudents()" aria-label="Search by Student ID"/>
+        <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()" title="Clear search" style="display:none;">✕</button>
+      </div>
+
+      <!-- Stat pills -->
+      <div class="students-stats">
+        <span class="stat-pill" id="totalCount">Total: 0</span>
+        <span class="stat-pill filtered" id="filteredCount" style="display:none;">Showing: 0</span>
+      </div>
+
+      <!-- Clear all (Task 3) -->
+      <button class="btn btn-danger" id="clearAllBtn" onclick="clearAllRecords()">🗑 Clear All Records</button>
+    </div>
+
+    <!-- TABLE (Task 3: display saved registrations) -->
+    <div class="table-wrap">
+      <table class="students-table" id="studentsTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Student Name</th>
+            <th>Student ID</th>
+            <th>Level</th>
+            <th>Department</th>
+            <th>Courses Selected</th>
+            <th>Date Registered</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="studentsBody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="empty-icon">📋</div>
+      <h3>No Registrations Found</h3>
+      <p id="emptyMsg">No student registrations have been submitted yet.</p>
+      <a href="registration.html" class="btn btn-primary">Register a Student</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><div class="logo-icon">VVU</div><span>Valley View University</span></div>
+        <p>Transforming lives through excellence in education and service to humanity.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="registration.html">Course Registration</a></li>
+          <li><a href="students.html">Registered Students</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="contact-item"><span>📍</span><span>PMB CE 11655, Oyibi, Accra, Ghana</span></div>
+        <div class="contact-item"><span>📞</span><span>+233 (0) 302 888 042</span></div>
+        <div class="contact-item"><span>✉️</span><span>info@vvu.edu.gh</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container"><p>&copy; 2025 Valley View University. All rights reserved. | Group 3–4</p></div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+/* ======================================================
+   TASK 3 JS: Display table, Delete, Search by ID, Clear all
+====================================================== */
+
+let allRecords = [];
+let filtered   = [];
+
+document.addEventListener('DOMContentLoaded', loadStudents);
+
+function getRecords() {
+  try { return JSON.parse(localStorage.getItem('vvu_students') || '[]'); } catch { return []; }
+}
+
+function loadStudents() {
+  allRecords = getRecords();
+  filtered   = [...allRecords];
+  renderTable(filtered);
+  updateStats();
+}
+
+function renderTable(records) {
+  const tbody = document.getElementById('studentsBody');
+  const empty = document.getElementById('emptyState');
+  const table = document.getElementById('studentsTable');
+
+  if (records.length === 0) {
+    table.style.display = 'none';
+    empty.style.display = 'flex';
+    document.getElementById('emptyMsg').textContent =
+      allRecords.length > 0
+        ? 'No students match your search. Try a different Student ID.'
+        : 'No student registrations have been submitted yet.';
+    return;
+  }
+
+  table.style.display = 'table';
+  empty.style.display = 'none';
+
+  tbody.innerHTML = records.map((r, i) => `
+    <tr id="row-${r.refNo}">
+      <td class="td-num">${i + 1}</td>
+      <td><strong>${escHtml(r.name)}</strong></td>
+      <td><span class="id-badge">${escHtml(r.sid)}</span></td>
+      <td>Level ${escHtml(r.level)}</td>
+      <td>${escHtml(r.dept)}</td>
+      <td>
+        <div class="courses-cell">
+          ${r.courses.map(c => `<span class="course-tag">${escHtml(c)}</span>`).join('')}
+        </div>
+      </td>
+      <td class="td-date">${escHtml(r.date)}</td>
+      <td>
+        <!-- Delete button (Task 3) -->
+        <button class="btn-delete" onclick="deleteRecord('${r.refNo}')" title="Delete this record">
+          🗑 Delete
+        </button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+/* Search by Student ID (Task 3) */
+function filterStudents() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  document.getElementById('clearSearchBtn').style.display = q ? 'flex' : 'none';
+
+  if (!q) {
+    filtered = [...allRecords];
+  } else {
+    filtered = allRecords.filter(r => r.sid.toLowerCase().includes(q));
+  }
+
+  renderTable(filtered);
+  updateStats();
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('clearSearchBtn').style.display = 'none';
+  filtered = [...allRecords];
+  renderTable(filtered);
+  updateStats();
+}
+
+/* Delete one record (Task 3) */
+function deleteRecord(refNo) {
+  if (!confirm('Delete this student registration? This cannot be undone.')) return;
+  allRecords = allRecords.filter(r => r.refNo !== refNo);
+  localStorage.setItem('vvu_students', JSON.stringify(allRecords));
+  filterStudents(); // re-apply current search
+}
+
+/* Clear all records (Task 3) */
+function clearAllRecords() {
+  if (allRecords.length === 0) { alert('There are no records to clear.'); return; }
+  if (!confirm('Are you sure you want to delete ALL student registrations? This cannot be undone.')) return;
+  localStorage.removeItem('vvu_students');
+  allRecords = [];
+  filtered   = [];
+  renderTable([]);
+  updateStats();
+}
+
+function updateStats() {
+  const total    = allRecords.length;
+  const showing  = filtered.length;
+  const isSearch = document.getElementById('searchInput').value.trim().length > 0;
+
+  document.getElementById('totalCount').textContent = `Total: ${total}`;
+  const filtEl = document.getElementById('filteredCount');
+  if (isSearch) {
+    filtEl.style.display = 'inline-flex';
+    filtEl.textContent = `Showing: ${showing}`;
+  } else {
+    filtEl.style.display = 'none';
+  }
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events | VVU</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body class="inner-page">
+
+<!-- NAVBAR -->
+<header class="navbar scrolled" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">VVU</div>
+      <div class="logo-text">
+        <span class="logo-name">Valley View University</span>
+        <span class="logo-tag">Excellence · Integrity · Service</span>
+      </div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html"        class="nav-link">Home</a>
+      <a href="registration.html" class="nav-link">Register</a>
+      <a href="students.html"     class="nav-link">Students</a>
+      <a href="events.html"       class="nav-link active">Events</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>Events</span>
+    </div>
+    <h1 class="page-title">Campus <em>Events</em></h1>
+    <p class="page-subtitle">Stay up to date with the latest academic, spiritual, social, and sports events at VVU.</p>
+  </div>
+</section>
+
+<!-- EVENTS SECTION -->
+<section class="events-section">
+  <div class="container">
+
+    <!-- Filter Dropdown (Task 4) -->
+    <div class="events-filter-bar">
+      <div class="filter-left">
+        <label for="categoryFilter" class="filter-label">Filter by Category:</label>
+        <!-- Dropdown: Academic, Spiritual, Social, Sports (Task 4) -->
+        <select id="categoryFilter" class="filter-select" onchange="filterEvents()">
+          <option value="all">All Events</option>
+          <option value="academic">Academic</option>
+          <option value="spiritual">Spiritual</option>
+          <option value="social">Social</option>
+          <option value="sports">Sports</option>
+        </select>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-cat="all"      onclick="setFilter('all',this)">All</button>
+        <button class="filter-tab"        data-cat="academic"  onclick="setFilter('academic',this)">Academic</button>
+        <button class="filter-tab"        data-cat="spiritual" onclick="setFilter('spiritual',this)">Spiritual</button>
+        <button class="filter-tab"        data-cat="social"    onclick="setFilter('social',this)">Social</button>
+        <button class="filter-tab"        data-cat="sports"    onclick="setFilter('sports',this)">Sports</button>
+      </div>
+      <p class="event-count" id="eventCount">Showing all 10 events</p>
+    </div>
+
+    <!-- Event Cards Grid (Task 4: minimum 6 events) -->
+    <div class="events-grid" id="eventsGrid">
+
+      <!-- EVENT 1 — Academic -->
+      <div class="event-card" data-category="academic">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="Orientation Week" loading="lazy"/>
+          <span class="event-category-badge academic">Academic</span>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span class="event-date">📅 September 8, 2025</span>
+            <span class="event-time">⏰ 9:00 AM – 4:00 PM</span>
+          </div>
+          <h3 class="event-title">Freshman Orientation Week</h3>
+          <p class="event-desc">Welcome new students to VVU! A full day of campus tours, faculty introductions, registration assistance, and social icebreakers.</p>
+          <div class="event-footer">
+            <span class="event-location">📍 Main Auditorium</span>
+            <button class="btn-event-detail" onclick="openModal(0)">Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 2 — Academic -->
+      <div class="event-card" data-category="academic">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1567168544230-8c8d1f5d3e29?w=600&q=80" alt="Research Symposium" loading="lazy"/>
+          <span class="event-category-badge academic">Academic</span>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span class="event-date">📅 October 15, 2025</span>
+            <span class="event-time">⏰ 10:00 AM – 5:00 PM</span>
+          </div>
+          <h3 class="event-title">Annual Research Symposium</h3>
+          <p class="event-desc">Faculty and postgraduate students present their latest research findings. Open to all students, staff, and industry professionals.</p>
+          <div class="event-footer">
+            <span class="event-location">📍 Conference Centre</span>
+            <button class="btn-event-detail" onclick="openModal(1)">Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 3 — Academic -->
+      <div class="event-card" data-category="academic">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80" alt="Graduation Ceremony" loading="lazy"/>
+          <span class="event-category-badge academic">Academic</span>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span class="event-date">📅 November 22, 2025</span>
+            <span class="event-time">⏰ 8:00 AM – 1:00 PM</span>
+          </div>
+          <h3 class="event-title">2025 Graduation Ceremony</h3>
+          <p class="event-desc">Celebrating the graduating class of 2025. Join us as we honour our graduates with family, faculty, and distinguished guests.</p>
+          <div class="event-footer">
+            <span class="event-location">📍 VVU Sports Complex</span>
+            <button class="btn-event-detail" onclick="openModal(2)">Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 4 — Spiritual -->
+      <div class="event-card" data-category="spiritual">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80" alt="Week of Prayer" loading="lazy"/>
+          <span class="event-category-badge spiritual">Spiritual</span>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span class="event-date">📅 September 22–26, 2025</span>
+            <span class="event-time">⏰ 6:00 AM – 7:30 AM</span>
+          </div>
+          <h3 class="event-title">Week of Prayer &amp; Revival</h3>
+          <p class="event-desc">A five-day spiritual programme featuring morning devotions, guest preachers, choir performances, and campus-wide worship sessions.</p>
+          <div class="event-footer">
+            <span class="event-location">📍 University Chapel</span>
+            <button class="btn-event-detail" onclick="openModal(3)">Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 5 — Spiritual -->
+      <div class="event-card" data-category="spiritual">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=600&q=80" alt="Vespers" loading="lazy"/>
+          <span class="event-category-badge spiritual">Spiritual</span>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span class="event-date">📅 Every Friday</span>
+            <span class="event-time">⏰ 6:00 PM – 7:00 PM</span>
+          </div>
+          <h3 class="event-title">Friday Evening Vespers</h3>
+          <p class="event-desc">Weekly vespers service welcoming all students and staff for an evening of worship, reflection, and spiritual renewal before the weekend.</p>
+          <div class="event-footer">
+            <span class="event-location">📍 University Chapel</span>
+            <button class="btn-event-detail" onclick="openModal(4)">Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 6 — Social -->
+      <div class="event-card" data-category="social">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=600&q=80" alt="Cultural Festival" loading="lazy"/>
+          <span class="event-category-badge social">Social</span>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span class="event-date">📅 October 25, 2025</span>
+            <span class="event-time">⏰ 12:00 PM – 9:00 PM</span>
+          </div>
+          <h3 class="event-title">VVU Cultural Festival</h3>
+          <p class="event-desc">A celebration of diversity featuring traditional food, music, dance performances, fashion shows, and art displays from students across Ghana and Africa.</p>
+          <div class="event-footer">
+            <span class="event-location">📍 Main Campus Grounds</span>
+            <button class="btn-event-detail" onclick="openModal(5)">Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 7 — Social -->
+      <div class="event-card" data-category="social">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=80" alt="Freshers Party" loading="lazy"/>
+          <span class="event-category-badge social">Social</span>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span class="event-date">📅 September 12, 2025</span>
+            <span class="event-time">⏰ 5:00 PM – 10:00 PM</span>
+          </div>
+          <h3 class="event-title">Freshers' Welcome Night</h3>
+          <p class="event-desc">An exciting welcome event for new students with live music, games, student club exhibitions, free food, and opportunities to make new friends.</p>
+          <div class="event-footer">
+            <span class="event-location">📍 Student Centre</span>
+            <button class="btn-event-detail" onclick="openModal(6)">Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 8 — Sports -->
+      <div class="event-card" data-category="sports">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80" alt="Inter-Hall Games" loading="lazy"/>
+          <span class="event-category-badge sports">Sports</span>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span class="event-date">📅 November 1–8, 2025</span>
+            <span class="event-time">⏰ All Day</span>
+          </div>
+          <h3 class="event-title">Inter-Hall Games Week</h3>
+          <p class="event-desc">Annual inter-hall sports competition featuring football, basketball, volleyball, athletics, table tennis, and more. Come cheer your hall on!</p>
+          <div class="event-footer">
+            <span class="event-location">📍 VVU Sports Complex</span>
+            <button class="btn-event-detail" onclick="openModal(7)">Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 9 — Sports -->
+      <div class="event-card" data-category="sports">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&q=80" alt="Marathon" loading="lazy"/>
+          <span class="event-category-badge sports">Sports</span>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span class="event-date">📅 October 5, 2025</span>
+            <span class="event-time">⏰ 6:00 AM – 12:00 PM</span>
+          </div>
+          <h3 class="event-title">VVU Fun Run &amp; Marathon</h3>
+          <p class="event-desc">Annual campus marathon open to students, staff, and the public. Enjoy 5K, 10K, and full marathon categories with prizes for top finishers.</p>
+          <div class="event-footer">
+            <span class="event-location">📍 Campus Perimeter Track</span>
+            <button class="btn-event-detail" onclick="openModal(8)">Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EVENT 10 — Academic -->
+      <div class="event-card" data-category="academic">
+        <div class="event-img-wrap">
+          <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80" alt="Career Fair" loading="lazy"/>
+          <span class="event-category-badge academic">Academic</span>
+        </div>
+        <div class="event-body">
+          <div class="event-meta">
+            <span class="event-date">📅 November 10, 2025</span>
+            <span class="event-time">⏰ 9:00 AM – 4:00 PM</span>
+          </div>
+          <h3 class="event-title">VVU Career &amp; Internship Fair</h3>
+          <p class="event-desc">Connect with 50+ employers, explore internship opportunities, get CV reviewed, and attend career workshops led by industry professionals.</p>
+          <div class="event-footer">
+            <span class="event-location">📍 Main Auditorium Foyer</span>
+            <button class="btn-event-detail" onclick="openModal(9)">Details →</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.events-grid -->
+
+    <!-- No results message -->
+    <div class="empty-state" id="noEventsState" style="display:none;">
+      <div class="empty-icon">📅</div>
+      <h3>No Events Found</h3>
+      <p>No events match the selected category. Please try a different filter.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><div class="logo-icon">VVU</div><span>Valley View University</span></div>
+        <p>Transforming lives through excellence in education and service to humanity.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="registration.html">Course Registration</a></li>
+          <li><a href="students.html">Registered Students</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="contact-item"><span>📍</span><span>PMB CE 11655, Oyibi, Accra, Ghana</span></div>
+        <div class="contact-item"><span>📞</span><span>+233 (0) 302 888 042</span></div>
+        <div class="contact-item"><span>✉️</span><span>info@vvu.edu.gh</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container"><p>&copy; 2025 Valley View University. All rights reserved. | Group 3–4</p></div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+/* ======================================================
+   TASK 4 JS: Filter events dynamically by category
+====================================================== */
+
+const TOTAL_EVENTS = 10;
+
+/* Filter via dropdown OR tab buttons */
+function filterEvents() {
+  const cat = document.getElementById('categoryFilter').value;
+  applyFilter(cat);
+  // Sync tabs
+  document.querySelectorAll('.filter-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.cat === cat);
+  });
+}
+
+function setFilter(cat, btn) {
+  document.getElementById('categoryFilter').value = cat;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilter(cat);
+}
+
+function applyFilter(cat) {
+  const cards = document.querySelectorAll('.event-card');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const match = cat === 'all' || card.dataset.category === cat;
+    card.style.display = match ? 'flex' : 'none';
+    if (match) visible++;
+  });
+
+  const countEl = document.getElementById('eventCount');
+  const label   = cat === 'all' ? `all ${TOTAL_EVENTS}` : visible;
+  const word    = visible === 1 ? 'event' : 'events';
+  countEl.textContent = `Showing ${label} ${word}`;
+
+  document.getElementById('noEventsState').style.display = visible === 0 ? 'flex' : 'none';
+}
+
+/* Simple modal placeholder – not required but useful */
+function openModal(idx) {
+  const titles = [
+    'Freshman Orientation Week',
+    'Annual Research Symposium',
+    '2025 Graduation Ceremony',
+    'Week of Prayer & Revival',
+    'Friday Evening Vespers',
+    'VVU Cultural Festival',
+    "Freshers' Welcome Night",
+    'Inter-Hall Games Week',
+    'VVU Fun Run & Marathon',
+    'VVU Career & Internship Fair'
+  ];
+  alert('📅 ' + titles[idx] + '\n\nFor full event details and RSVP, please contact the Student Affairs Office:\nstudentaffairs@vvu.edu.gh | +233 302 888 042');
+}
+</script>
+</body>
+</html>
