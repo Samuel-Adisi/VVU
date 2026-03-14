@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Registered Students | VVU</title>
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body class="inner-page">
 
@@ -20,10 +22,10 @@
       </div>
     </a>
     <nav class="nav-links" id="navLinks">
-      <a href="index.html"        class="nav-link">Home</a>
-      <a href="registration.html" class="nav-link">Register</a>
-      <a href="students.html"     class="nav-link active">Students</a>
-      <a href="events.html"       class="nav-link">Events</a>
+      <a href="index.html"         class="nav-link">Home</a>
+      <a href="registration.html"  class="nav-link">Register</a>
+      <a href="students.html"      class="nav-link active">Students</a>
+      <a href="events.html"        class="nav-link">Events</a>
       <a href="index.html#contact" class="nav-link">Contact</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -40,7 +42,7 @@
       <a href="index.html">Home</a><span>/</span><span>Registered Students</span>
     </div>
     <h1 class="page-title">Registered <em>Students</em></h1>
-    <p class="page-subtitle">View, search, and manage all student course registrations stored locally.</p>
+    <p class="page-subtitle">View, search, and manage all student course registrations saved locally.</p>
   </div>
 </section>
 
@@ -48,27 +50,31 @@
 <section class="students-section">
   <div class="container">
 
-    <!-- Controls bar -->
+    <!-- Controls -->
     <div class="students-controls">
       <!-- Search by Student ID (Task 3) -->
       <div class="search-wrap">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="Search by Student ID (e.g. VVU/2025/01)" oninput="filterStudents()" aria-label="Search by Student ID"/>
-        <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()" title="Clear search" style="display:none;">✕</button>
+        <ion-icon name="search-outline"></ion-icon>
+        <input type="text" id="searchInput" placeholder="Search by Student ID  e.g. VVU/2025/01"
+               oninput="filterStudents()" aria-label="Search by Student ID"/>
+        <button class="clear-search-btn" id="clearSearchBtn"
+                onclick="clearSearch()" title="Clear" style="display:none;">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
       </div>
-
-      <!-- Stat pills -->
+      <!-- Stats -->
       <div class="students-stats">
         <span class="stat-pill" id="totalCount">Total: 0</span>
         <span class="stat-pill filtered" id="filteredCount" style="display:none;">Showing: 0</span>
       </div>
-
       <!-- Clear all (Task 3) -->
-      <button class="btn btn-danger" id="clearAllBtn" onclick="clearAllRecords()">🗑 Clear All Records</button>
+      <button class="btn btn-danger" onclick="clearAllRecords()">
+        <ion-icon name="trash-outline"></ion-icon> Clear All Records
+      </button>
     </div>
 
-    <!-- TABLE (Task 3: display saved registrations) -->
-    <div class="table-wrap">
+    <!-- TABLE (Task 3) -->
+    <div class="table-wrap" id="tableWrap">
       <table class="students-table" id="studentsTable">
         <thead>
           <tr>
@@ -82,18 +88,18 @@
             <th>Action</th>
           </tr>
         </thead>
-        <tbody id="studentsBody">
-          <!-- Populated by JS -->
-        </tbody>
+        <tbody id="studentsBody"></tbody>
       </table>
     </div>
 
     <!-- Empty state -->
     <div class="empty-state" id="emptyState" style="display:none;">
-      <div class="empty-icon">📋</div>
+      <div class="empty-icon"><ion-icon name="clipboard-outline"></ion-icon></div>
       <h3>No Registrations Found</h3>
       <p id="emptyMsg">No student registrations have been submitted yet.</p>
-      <a href="registration.html" class="btn btn-primary">Register a Student</a>
+      <a href="registration.html" class="btn btn-primary">
+        <ion-icon name="add-circle-outline"></ion-icon> Register a Student
+      </a>
     </div>
 
   </div>
@@ -106,6 +112,12 @@
       <div class="footer-brand">
         <div class="footer-logo"><div class="logo-icon">VVU</div><span>Valley View University</span></div>
         <p>Transforming lives through excellence in education and service to humanity.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+          <a href="#" class="social-link" aria-label="Twitter"><ion-icon name="logo-twitter"></ion-icon></a>
+          <a href="#" class="social-link" aria-label="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+          <a href="#" class="social-link" aria-label="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
@@ -118,9 +130,9 @@
       </div>
       <div class="footer-col">
         <h4>Contact Us</h4>
-        <div class="contact-item"><span>📍</span><span>PMB CE 11655, Oyibi, Accra, Ghana</span></div>
-        <div class="contact-item"><span>📞</span><span>+233 (0) 302 888 042</span></div>
-        <div class="contact-item"><span>✉️</span><span>info@vvu.edu.gh</span></div>
+        <div class="contact-item"><ion-icon name="location-outline"></ion-icon><span>PMB CE 11655, Oyibi, Accra, Ghana</span></div>
+        <div class="contact-item"><ion-icon name="call-outline"></ion-icon><span>+233 (0) 302 888 042</span></div>
+        <div class="contact-item"><ion-icon name="mail-outline"></ion-icon><span>info@vvu.edu.gh</span></div>
       </div>
     </div>
   </div>
@@ -131,10 +143,10 @@
 
 <script src="main.js"></script>
 <script>
-/* ======================================================
-   TASK 3 JS: Display table, Delete, Search by ID, Clear all
-====================================================== */
-
+/* ============================================================
+   TASK 3 JS — Display table, Delete button,
+   Search by Student ID, Clear all records
+============================================================ */
 let allRecords = [];
 let filtered   = [];
 
@@ -153,8 +165,8 @@ function loadStudents() {
 
 function renderTable(records) {
   const tbody = document.getElementById('studentsBody');
+  const table = document.getElementById('tableWrap');
   const empty = document.getElementById('emptyState');
-  const table = document.getElementById('studentsTable');
 
   if (records.length === 0) {
     table.style.display = 'none';
@@ -166,26 +178,25 @@ function renderTable(records) {
     return;
   }
 
-  table.style.display = 'table';
+  table.style.display = 'block';
   empty.style.display = 'none';
 
   tbody.innerHTML = records.map((r, i) => `
-    <tr id="row-${r.refNo}">
+    <tr>
       <td class="td-num">${i + 1}</td>
-      <td><strong>${escHtml(r.name)}</strong></td>
-      <td><span class="id-badge">${escHtml(r.sid)}</span></td>
-      <td>Level ${escHtml(r.level)}</td>
-      <td>${escHtml(r.dept)}</td>
+      <td><strong>${esc(r.name)}</strong></td>
+      <td><span class="id-badge">${esc(r.sid)}</span></td>
+      <td>Level ${esc(r.level)}</td>
+      <td>${esc(r.dept)}</td>
       <td>
         <div class="courses-cell">
-          ${r.courses.map(c => `<span class="course-tag">${escHtml(c)}</span>`).join('')}
+          ${r.courses.map(c => `<span class="course-tag">${esc(c)}</span>`).join('')}
         </div>
       </td>
-      <td class="td-date">${escHtml(r.date)}</td>
+      <td class="td-date">${esc(r.date)}</td>
       <td>
-        <!-- Delete button (Task 3) -->
-        <button class="btn-delete" onclick="deleteRecord('${r.refNo}')" title="Delete this record">
-          🗑 Delete
+        <button class="btn-delete" onclick="deleteRecord('${esc(r.refNo)}')">
+          <ion-icon name="trash-outline"></ion-icon> Delete
         </button>
       </td>
     </tr>
@@ -196,13 +207,7 @@ function renderTable(records) {
 function filterStudents() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   document.getElementById('clearSearchBtn').style.display = q ? 'flex' : 'none';
-
-  if (!q) {
-    filtered = [...allRecords];
-  } else {
-    filtered = allRecords.filter(r => r.sid.toLowerCase().includes(q));
-  }
-
+  filtered = q ? allRecords.filter(r => r.sid.toLowerCase().includes(q)) : [...allRecords];
   renderTable(filtered);
   updateStats();
 }
@@ -220,13 +225,17 @@ function deleteRecord(refNo) {
   if (!confirm('Delete this student registration? This cannot be undone.')) return;
   allRecords = allRecords.filter(r => r.refNo !== refNo);
   localStorage.setItem('vvu_students', JSON.stringify(allRecords));
-  filterStudents(); // re-apply current search
+  filtered = allRecords.filter(r =>
+    r.sid.toLowerCase().includes(document.getElementById('searchInput').value.trim().toLowerCase())
+  );
+  renderTable(filtered);
+  updateStats();
 }
 
 /* Clear all records (Task 3) */
 function clearAllRecords() {
   if (allRecords.length === 0) { alert('There are no records to clear.'); return; }
-  if (!confirm('Are you sure you want to delete ALL student registrations? This cannot be undone.')) return;
+  if (!confirm('Delete ALL student registrations? This cannot be undone.')) return;
   localStorage.removeItem('vvu_students');
   allRecords = [];
   filtered   = [];
@@ -235,27 +244,21 @@ function clearAllRecords() {
 }
 
 function updateStats() {
-  const total    = allRecords.length;
-  const showing  = filtered.length;
   const isSearch = document.getElementById('searchInput').value.trim().length > 0;
-
-  document.getElementById('totalCount').textContent = `Total: ${total}`;
+  document.getElementById('totalCount').textContent = 'Total: ' + allRecords.length;
   const filtEl = document.getElementById('filteredCount');
   if (isSearch) {
     filtEl.style.display = 'inline-flex';
-    filtEl.textContent = `Showing: ${showing}`;
+    filtEl.textContent = 'Showing: ' + filtered.length;
   } else {
     filtEl.style.display = 'none';
   }
 }
 
-function escHtml(str) {
-  if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+function esc(str) {
+  return String(str || '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 </script>
 </body>

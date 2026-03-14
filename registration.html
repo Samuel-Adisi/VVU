@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Course Registration | VVU</title>
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body class="inner-page">
 
@@ -20,10 +22,10 @@
       </div>
     </a>
     <nav class="nav-links" id="navLinks">
-      <a href="index.html"        class="nav-link">Home</a>
-      <a href="registration.html" class="nav-link active">Register</a>
-      <a href="students.html"     class="nav-link">Students</a>
-      <a href="events.html"       class="nav-link">Events</a>
+      <a href="index.html"         class="nav-link">Home</a>
+      <a href="registration.html"  class="nav-link active">Register</a>
+      <a href="students.html"      class="nav-link">Students</a>
+      <a href="events.html"        class="nav-link">Events</a>
       <a href="index.html#contact" class="nav-link">Contact</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -40,7 +42,7 @@
       <a href="index.html">Home</a><span>/</span><span>Course Registration</span>
     </div>
     <h1 class="page-title">Course <em>Registration</em></h1>
-    <p class="page-subtitle">Register for the 2025/2026 academic year. All fields are required. Student ID format: <strong>VVU/XXXX/XX</strong></p>
+    <p class="page-subtitle">Register for the 2025/2026 academic year. Student ID format: <strong>VVU/XXXX/XX</strong></p>
   </div>
 </section>
 
@@ -48,7 +50,7 @@
 <section class="reg-section">
   <div class="container reg-layout">
 
-    <!-- ========== FORM (Task 2) ========== -->
+    <!-- FORM -->
     <div class="reg-form-wrap">
       <form id="regForm" novalidate>
         <h2 class="form-heading">Student Registration Form</h2>
@@ -56,14 +58,14 @@
         <!-- Student Name -->
         <div class="form-group">
           <label for="studentName">Student Name *</label>
-          <input type="text" id="studentName" name="studentName" placeholder="e.g. Kwame Mensah" autocomplete="name"/>
+          <input type="text" id="studentName" name="studentName" placeholder="e.g. Kwame Mensah"/>
           <span class="err" id="studentNameErr"></span>
         </div>
 
         <!-- Student ID -->
         <div class="form-group">
-          <label for="studentId">Student ID * <small>(Format: VVU/XXXX/XX)</small></label>
-          <input type="text" id="studentId" name="studentId" placeholder="e.g. VVU/2025/01" autocomplete="off"/>
+          <label for="studentId">Student ID * <small>Format: VVU/XXXX/XX</small></label>
+          <input type="text" id="studentId" name="studentId" placeholder="e.g. VVU/2025/01"/>
           <span class="err" id="studentIdErr"></span>
         </div>
 
@@ -86,57 +88,55 @@
           <select id="department" name="department">
             <option value="">— Select Department —</option>
             <option value="Business Administration">Business Administration</option>
-            <option value="Accounting & Finance">Accounting &amp; Finance</option>
+            <option value="Accounting &amp; Finance">Accounting &amp; Finance</option>
             <option value="Computer Science">Computer Science</option>
             <option value="Engineering">Engineering</option>
             <option value="Health Sciences">Health Sciences</option>
-            <option value="Arts & Social Sciences">Arts &amp; Social Sciences</option>
+            <option value="Arts &amp; Social Sciences">Arts &amp; Social Sciences</option>
             <option value="Education">Education</option>
-            <option value="Theology & Ministry">Theology &amp; Ministry</option>
+            <option value="Theology &amp; Ministry">Theology &amp; Ministry</option>
           </select>
           <span class="err" id="departmentErr"></span>
         </div>
 
-        <!-- Courses — checkbox selection (Task 2) -->
+        <!-- Courses — checkbox selection -->
         <div class="form-group">
-          <label>Courses * <small>(Select at least one)</small></label>
+          <label>Courses * <small>Select at least one</small></label>
           <div class="courses-box">
-            <div class="course-check"><label><input type="checkbox" name="courses" value="GEN101 – Communication Skills (2cr)"/> GEN101 – Communication Skills <span class="cr-badge">2 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="GEN102 – Critical Thinking (2cr)"/> GEN102 – Critical Thinking <span class="cr-badge">2 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="GEN201 – Research Methods (3cr)"/> GEN201 – Research Methods <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="MAT101 – Mathematics for Business (3cr)"/> MAT101 – Mathematics for Business <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="MAT201 – Statistics & Probability (3cr)"/> MAT201 – Statistics &amp; Probability <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="BUS101 – Introduction to Business (3cr)"/> BUS101 – Introduction to Business <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="BUS201 – Business Communication (3cr)"/> BUS201 – Business Communication <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="BUS301 – Strategic Management (3cr)"/> BUS301 – Strategic Management <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="BUS401 – Entrepreneurship & Innovation (3cr)"/> BUS401 – Entrepreneurship &amp; Innovation <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="ACC101 – Principles of Accounting (3cr)"/> ACC101 – Principles of Accounting <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="ACC201 – Financial Accounting II (3cr)"/> ACC201 – Financial Accounting II <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="ACC301 – Management Accounting (3cr)"/> ACC301 – Management Accounting <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="CS101 – Introduction to Computing (3cr)"/> CS101 – Introduction to Computing <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="CS201 – Data Structures & Algorithms (3cr)"/> CS201 – Data Structures &amp; Algorithms <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="CS301 – Database Management (3cr)"/> CS301 – Database Management <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="CS401 – Software Engineering (3cr)"/> CS401 – Software Engineering <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="HLT101 – Human Anatomy & Physiology (3cr)"/> HLT101 – Human Anatomy &amp; Physiology <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="HLT201 – Public Health (3cr)"/> HLT201 – Public Health <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="EDU101 – Principles of Education (3cr)"/> EDU101 – Principles of Education <span class="cr-badge">3 cr</span></label></div>
-            <div class="course-check"><label><input type="checkbox" name="courses" value="THE101 – Old Testament Survey (3cr)"/> THE101 – Old Testament Survey <span class="cr-badge">3 cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="GEN101 – Communication Skills (2cr)"/> GEN101 – Communication Skills <span class="cr-badge">2cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="GEN102 – Critical Thinking (2cr)"/> GEN102 – Critical Thinking <span class="cr-badge">2cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="GEN201 – Research Methods (3cr)"/> GEN201 – Research Methods <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="MAT101 – Mathematics for Business (3cr)"/> MAT101 – Mathematics for Business <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="MAT201 – Statistics &amp; Probability (3cr)"/> MAT201 – Statistics &amp; Probability <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="BUS101 – Introduction to Business (3cr)"/> BUS101 – Introduction to Business <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="BUS201 – Business Communication (3cr)"/> BUS201 – Business Communication <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="BUS301 – Strategic Management (3cr)"/> BUS301 – Strategic Management <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="BUS401 – Entrepreneurship &amp; Innovation (3cr)"/> BUS401 – Entrepreneurship &amp; Innovation <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="ACC101 – Principles of Accounting (3cr)"/> ACC101 – Principles of Accounting <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="ACC201 – Financial Accounting II (3cr)"/> ACC201 – Financial Accounting II <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="ACC301 – Management Accounting (3cr)"/> ACC301 – Management Accounting <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="CS101 – Introduction to Computing (3cr)"/> CS101 – Introduction to Computing <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="CS201 – Data Structures &amp; Algorithms (3cr)"/> CS201 – Data Structures &amp; Algorithms <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="CS301 – Database Management (3cr)"/> CS301 – Database Management <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="CS401 – Software Engineering (3cr)"/> CS401 – Software Engineering <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="HLT101 – Human Anatomy &amp; Physiology (3cr)"/> HLT101 – Human Anatomy &amp; Physiology <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="HLT201 – Public Health (3cr)"/> HLT201 – Public Health <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="EDU101 – Principles of Education (3cr)"/> EDU101 – Principles of Education <span class="cr-badge">3cr</span></label></div>
+            <div class="course-check"><label><input type="checkbox" name="courses" value="THE101 – Old Testament Survey (3cr)"/> THE101 – Old Testament Survey <span class="cr-badge">3cr</span></label></div>
           </div>
           <span class="err" id="coursesErr"></span>
         </div>
 
-        <!-- Submit Button -->
         <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
-          Submit Registration
+          <ion-icon name="checkmark-circle-outline"></ion-icon> Submit Registration
         </button>
       </form>
 
-      <!-- ===== RESULTS PANEL (Task 2: Display selected courses after submission) ===== -->
+      <!-- RESULT PANEL — shown after submission -->
       <div class="result-panel" id="resultPanel" style="display:none;">
         <div class="result-icon">✅</div>
         <h3>Registration Submitted Successfully!</h3>
         <p>Your registration has been saved. Below is a summary of your selected courses.</p>
-
         <div class="result-table-wrap">
           <table class="result-table">
             <tbody>
@@ -144,19 +144,23 @@
               <tr><th>Student ID</th><td id="res-id"></td></tr>
               <tr><th>Level</th><td id="res-level"></td></tr>
               <tr><th>Department</th><td id="res-dept"></td></tr>
-              <tr><th>Ref. No.</th><td id="res-ref"></td></tr>
-              <tr><th>Date</th><td id="res-date"></td></tr>
+              <tr><th>Reference No.</th><td id="res-ref"></td></tr>
+              <tr><th>Date Submitted</th><td id="res-date"></td></tr>
             </tbody>
           </table>
         </div>
-
         <h4 class="selected-courses-heading">Selected Courses</h4>
         <ul class="selected-courses-list" id="selectedCoursesList"></ul>
-
         <div class="result-actions">
-          <button class="btn btn-primary" onclick="window.print()">🖨 Print / Save</button>
-          <button class="btn btn-outline" id="newRegBtn">Register Another Student</button>
-          <a href="students.html" class="btn btn-outline">View All Students →</a>
+          <button class="btn btn-primary" onclick="window.print()">
+            <ion-icon name="print-outline"></ion-icon> Print / Save
+          </button>
+          <button class="btn btn-outline dark" id="newRegBtn">
+            <ion-icon name="add-circle-outline"></ion-icon> Register Another
+          </button>
+          <a href="students.html" class="btn btn-outline dark">
+            <ion-icon name="people-outline"></ion-icon> View All Students
+          </a>
         </div>
       </div>
     </div>
@@ -164,10 +168,10 @@
     <!-- SIDEBAR -->
     <aside class="reg-sidebar">
       <div class="sidebar-card">
-        <h4>📋 Instructions</h4>
+        <h4><ion-icon name="clipboard-outline"></ion-icon> Instructions</h4>
         <ol>
-          <li>Enter your full name as it appears on official records.</li>
-          <li>Student ID must follow format: <strong>VVU/XXXX/XX</strong> (e.g. VVU/2025/01).</li>
+          <li>Enter your full name as on official records.</li>
+          <li>Student ID format: <strong>VVU/XXXX/XX</strong> (e.g. VVU/2025/01).</li>
           <li>Select your current level (100–400).</li>
           <li>Choose your department.</li>
           <li>Tick at least one course.</li>
@@ -175,21 +179,21 @@
         </ol>
       </div>
       <div class="sidebar-card">
-        <h4>📅 Key Dates 2025/2026</h4>
+        <h4><ion-icon name="calendar-outline"></ion-icon> Key Dates 2025/2026</h4>
         <div class="key-date"><span class="date-badge upcoming">Sep 1</span><span>Registration Opens</span></div>
         <div class="key-date"><span class="date-badge warning">Sep 30</span><span>Registration Deadline</span></div>
         <div class="key-date"><span class="date-badge info">Oct 7</span><span>Lectures Begin</span></div>
         <div class="key-date"><span class="date-badge info">Dec 15</span><span>End of Semester</span></div>
       </div>
       <div class="sidebar-card">
-        <h4>📞 Registrar's Office</h4>
+        <h4><ion-icon name="call-outline"></ion-icon> Registrar's Office</h4>
         <p>+233 (0) 302 888 042</p>
         <p>registrar@vvu.edu.gh</p>
         <p>Mon–Fri: 8AM – 5PM</p>
       </div>
     </aside>
 
-  </div><!-- /.reg-layout -->
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -199,6 +203,12 @@
       <div class="footer-brand">
         <div class="footer-logo"><div class="logo-icon">VVU</div><span>Valley View University</span></div>
         <p>Transforming lives through excellence in education and service to humanity.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+          <a href="#" class="social-link" aria-label="Twitter"><ion-icon name="logo-twitter"></ion-icon></a>
+          <a href="#" class="social-link" aria-label="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+          <a href="#" class="social-link" aria-label="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
+        </div>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
@@ -211,9 +221,9 @@
       </div>
       <div class="footer-col">
         <h4>Contact Us</h4>
-        <div class="contact-item"><span>📍</span><span>PMB CE 11655, Oyibi, Accra, Ghana</span></div>
-        <div class="contact-item"><span>📞</span><span>+233 (0) 302 888 042</span></div>
-        <div class="contact-item"><span>✉️</span><span>info@vvu.edu.gh</span></div>
+        <div class="contact-item"><ion-icon name="location-outline"></ion-icon><span>PMB CE 11655, Oyibi, Accra, Ghana</span></div>
+        <div class="contact-item"><ion-icon name="call-outline"></ion-icon><span>+233 (0) 302 888 042</span></div>
+        <div class="contact-item"><ion-icon name="mail-outline"></ion-icon><span>info@vvu.edu.gh</span></div>
       </div>
     </div>
   </div>
@@ -224,97 +234,75 @@
 
 <script src="main.js"></script>
 <script>
-/* ======================================================
-   TASK 2 JS: Validate fields, ID format VVU/XXXX/XX,
+/* ============================================================
+   TASK 2 JS — Validate, ID format VVU/XXXX/XX,
    display selected courses, save to localStorage
-====================================================== */
-
-const form = document.getElementById('regForm');
+============================================================ */
+const form        = document.getElementById('regForm');
 const resultPanel = document.getElementById('resultPanel');
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
-  if (validateForm()) {
-    saveAndShow();
-  }
+  if (validateForm()) saveAndShow();
 });
 
 document.getElementById('newRegBtn').addEventListener('click', function() {
   form.reset();
-  clearErrors();
+  clearAllErrors();
   form.style.display = 'block';
   resultPanel.style.display = 'none';
   window.scrollTo({ top: 300, behavior: 'smooth' });
 });
 
 function validateForm() {
-  let valid = true;
+  let ok = true;
 
   // Student Name
   const name = document.getElementById('studentName').value.trim();
   if (name.length < 3) {
-    showErr('studentNameErr', 'Please enter a valid full name (min 3 characters).');
-    valid = false;
-  } else {
-    clearErr('studentNameErr');
-  }
+    showErr('studentNameErr', 'Please enter your full name (min 3 characters).'); ok = false;
+  } else { clearErr('studentNameErr'); }
 
-  // Student ID — must match VVU/XXXX/XX (letters/digits after slashes)
+  // Student ID — must match VVU/XXXX/XX exactly
   const sid = document.getElementById('studentId').value.trim();
-  const sidPattern = /^VVU\/[A-Za-z0-9]{4}\/[A-Za-z0-9]{2}$/;
-  if (!sidPattern.test(sid)) {
-    showErr('studentIdErr', 'Student ID must follow format VVU/XXXX/XX (e.g. VVU/2025/01).');
-    valid = false;
-  } else {
-    clearErr('studentIdErr');
-  }
+  if (!/^VVU\/[A-Za-z0-9]{4}\/[A-Za-z0-9]{2}$/.test(sid)) {
+    showErr('studentIdErr', 'Format must be VVU/XXXX/XX  e.g. VVU/2025/01'); ok = false;
+  } else { clearErr('studentIdErr'); }
 
   // Level
-  const level = document.getElementById('level').value;
-  if (!level) {
-    showErr('levelErr', 'Please select a level.');
-    valid = false;
-  } else {
-    clearErr('levelErr');
-  }
+  if (!document.getElementById('level').value) {
+    showErr('levelErr', 'Please select your level.'); ok = false;
+  } else { clearErr('levelErr'); }
 
   // Department
-  const dept = document.getElementById('department').value;
-  if (!dept) {
-    showErr('departmentErr', 'Please select a department.');
-    valid = false;
-  } else {
-    clearErr('departmentErr');
-  }
+  if (!document.getElementById('department').value) {
+    showErr('departmentErr', 'Please select your department.'); ok = false;
+  } else { clearErr('departmentErr'); }
 
-  // Courses — at least one checkbox
-  const checked = document.querySelectorAll('input[name="courses"]:checked');
-  if (checked.length === 0) {
-    showErr('coursesErr', 'Please select at least one course.');
-    valid = false;
-  } else {
-    clearErr('coursesErr');
-  }
+  // Courses — at least one checkbox ticked
+  if (document.querySelectorAll('input[name="courses"]:checked').length === 0) {
+    showErr('coursesErr', 'Please select at least one course.'); ok = false;
+  } else { clearErr('coursesErr'); }
 
-  return valid;
+  return ok;
 }
 
 function saveAndShow() {
-  const name  = document.getElementById('studentName').value.trim();
-  const sid   = document.getElementById('studentId').value.trim();
-  const level = document.getElementById('level').value;
-  const dept  = document.getElementById('department').value;
+  const name    = document.getElementById('studentName').value.trim();
+  const sid     = document.getElementById('studentId').value.trim();
+  const level   = document.getElementById('level').value;
+  const dept    = document.getElementById('department').value;
   const checked = [...document.querySelectorAll('input[name="courses"]:checked')].map(cb => cb.value);
-  const refNo = 'REG-' + Date.now();
-  const date  = new Date().toLocaleString();
+  const refNo   = 'REG-' + Date.now();
+  const date    = new Date().toLocaleString();
 
   // Save to localStorage
   const record = { refNo, name, sid, level, dept, courses: checked, date };
-  let all = getRecords();
+  const all = getRecords();
   all.push(record);
   localStorage.setItem('vvu_students', JSON.stringify(all));
 
-  // Display results (Task 2: display selected courses after submission)
+  // Populate result summary
   document.getElementById('res-name').textContent  = name;
   document.getElementById('res-id').textContent    = sid;
   document.getElementById('res-level').textContent = 'Level ' + level;
@@ -322,8 +310,9 @@ function saveAndShow() {
   document.getElementById('res-ref').textContent   = refNo;
   document.getElementById('res-date').textContent  = date;
 
-  const courseList = document.getElementById('selectedCoursesList');
-  courseList.innerHTML = checked.map(c => `<li>✔ ${c}</li>`).join('');
+  // Display selected courses after submission (Task 2 requirement)
+  document.getElementById('selectedCoursesList').innerHTML =
+    checked.map(c => `<li>${c}</li>`).join('');
 
   form.style.display = 'none';
   resultPanel.style.display = 'block';
@@ -333,18 +322,16 @@ function saveAndShow() {
 function getRecords() {
   try { return JSON.parse(localStorage.getItem('vvu_students') || '[]'); } catch { return []; }
 }
-
 function showErr(id, msg) {
   const el = document.getElementById(id);
-  if (el) { el.textContent = msg; el.previousElementSibling?.classList.add('invalid'); }
+  if (el) el.textContent = msg;
 }
 function clearErr(id) {
   const el = document.getElementById(id);
-  if (el) { el.textContent = ''; }
+  if (el) el.textContent = '';
 }
-function clearErrors() {
+function clearAllErrors() {
   document.querySelectorAll('.err').forEach(e => e.textContent = '');
-  document.querySelectorAll('.invalid').forEach(e => e.classList.remove('invalid'));
 }
 </script>
 </body>
